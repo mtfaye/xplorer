@@ -1,0 +1,41 @@
+
+1. Open the python interpreter from command line by just typing python : 
+                 ``` $ (venv) python  ```
+
+2. Import the profiler module : 
+                ```>>> import profiler as pr ```
+
+3. Now try these following scripts to run your analysis: 
+
+	Create a variable name of your dataset
+ 	>>> file = r"..User/Documents/file.csv" 
+
+ 	Build the excel report
+ 	>>> pr.Profiler().build_report(file) 
+
+ 	Print histograms and bar graphs
+ 	>>> pr.Profiler().print_graphs(file)
+
+ 	NB: By default if no filter is applied for bar graphs, only the 10 subcategories with the highest values will be displayed.
+ 	Now to filter the number of bars apply the following function: 
+ 	
+ 	For eight highest values  
+ 	>>> pr.Profiler().f_eight(file)
+
+ 	For five highest values 
+ 	>>> pr.Profiler().f_five(file) 
+
+ 	To show all  
+ 	>>> pr.Profiler().print_all(file) 
+ 	
+ 	
+ 	To do a log tranformation of your numerical variables  
+ 	>>> pr.Profiler().log(file) 
+
+
+ 	To run a correlation analysis: Print a heatmap
+ 	Strat by declaring your chosen target variable 
+ 	>>> col = "Amount"
+
+ 	then call the function corr_viz()  
+ 	>>> pr.Profiler().corr_viz(file) 

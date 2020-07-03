@@ -1,0 +1,9 @@
+.idea/
+__pycache__/
+venv/
+.ipynb_checkpoints/
+.vscode/
+src/.idea/
+src/.ipynb_checkpoints/
+src/.vscode/
+src/__pycache__/

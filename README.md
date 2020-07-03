@@ -1,0 +1,97 @@
+# Profiler tool 
+v 0.01 alpha.
+
+
+## Package content 
+	
+	
+		├──.vscode
+		│
+		├── README.md
+		│  
+		├── docs   #  Contains documentations
+		│  
+		├── outfile   # Contains report files
+		│  
+		├── examples   # Examples on how to setup and run the app 
+		│  
+		├── src   # Utility functions
+		│   
+		├── tests   # For unittesting 
+		│   
+		├──.gitignore   # List of undesired built-in files
+		│  
+		├── requirements.txt   # Bucket of all dependencies
+		│ 
+		├── profiler.py   # Main module of the profiler  
+		│ 
+		├── setup.py   # Installer module
+
+
+## Prerequisites 
+
+Make sure to have [pip](https://pip.pypa.io/en/stable/), [Git](https://git-scm.com/downloads) and [Python3+](https://www.python.org/downloads/) installed in your VM. 
+
+
+## Set up 
+
+From comnand line :
+
+1. Clone the repo :  ``` $ git clone "link of the repo"```
+
+2. Go into the working directory : ``` $ cd profiler/ ```
+
+3. Create a virtual environment venv :  ``` $ py -m venv venv ```
+
+4. Activate it :  ``` $ venv\scripts\activate ```
+
+5. Install now the necessary dependencies :  ``` $ (venv) pip install -r requirements.txt ```
+		
+	     
+## Run it 
+
+1. Open the python interpreter from command line by just typing python : 
+                 ``` $ (venv) python  ```
+
+2. Import the profiler module : 
+                ```>>> import profiler as pr ```
+
+3. Now try these following scripts to run your analysis: 
+
+			Create a variable name of your dataset
+			>>> file = r"..User/Documents/file.csv" 
+
+			Build the excel report
+			>>> pr.Profiler().build_report(file) 
+
+			Print histograms and bars
+			>>> pr.Profiler().print_graphs(file)
+
+			NB: By default if no filter is applied for bars, only the 10 subcategories with the highest values will be shown.
+			Now to filter the number of bars use one of the following functions accordingly: 
+			
+			For eight highest values  
+			>>> pr.Profiler().f_eight(file)
+
+			For five highest values 
+			>>> pr.Profiler().f_five(file) 
+
+			To show all  
+			>>> pr.Profiler().print_all(file) 
+			
+			To do a log tranformation 
+
+			>>> pr.Profiler().log(file) 
+
+			To run a correlation analysis: Print a heatmap
+			Strat by declaring your chosen target variable 
+			>>> col = "Amount"
+
+			then call the function corr_viz()  
+			>>> pr.Profiler().corr_viz(file) 
+
+
+
+## Enjoy ! 
+
+For bugs contact @mouhameth.faye@resolutioninc.ca
