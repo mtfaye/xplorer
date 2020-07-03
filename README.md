@@ -80,14 +80,10 @@ From comnand line :
 			>>> pr.Profiler().print_all(file) 
 			
 			To do a log tranformation 
-
 			>>> pr.Profiler().log(file) 
 
 			To run a correlation analysis: Print a heatmap
-			Strat by declaring your chosen target variable 
-			>>> col = "Amount"
-
-			then call the function corr_viz()  
+			Call the function corr_viz()  
 			>>> pr.Profiler().corr_viz(file) 
 
 
