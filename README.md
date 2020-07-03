@@ -37,7 +37,7 @@ Make sure to have [pip](https://pip.pypa.io/en/stable/), [Git](https://git-scm.c
 
 From comnand line :
 
-1. Clone the repo :  ``` $ git clone "https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler"```
+1. Clone the repo :  ``` $ git clone https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler```
 
 2. Go into the working directory : ``` $ cd profiler/ ```
 
