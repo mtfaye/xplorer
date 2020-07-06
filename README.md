@@ -30,7 +30,7 @@ v 0.01 alpha.
 
 ## Prerequisites 
 
-Make sure to have [pip](https://pip.pypa.io/en/stable/), [Git](https://git-scm.com/downloads) and [Python3+](https://www.python.org/downloads/) installed in your VM. 
+Make sure to have the latest [pip](https://pip.pypa.io/en/stable/), [Git](https://git-scm.com/downloads) and [Python3+](https://www.python.org/downloads/) installed in your VM. 
 
 
 ## Set up 
@@ -86,6 +86,12 @@ From comnand line :
 			Call the function corr_viz()  
 			>>> pr.Profiler().corr_viz(file) 
 
+
+## Note
+
+This alpha version of the app only reads CSV files with"|" seperator and headers. 
+The lack of a standard from the files produced by our customers makes it annoying to build a sophisticated module that process CSV files from multiple sources. Still, while the delimiters and quoting characters vary, the overall format is similar enough that it is possible to write a single module which can efficiently manipulate such data. If the user pf this app is comfortable enough with python, he can for now modify the code accordingly to his needs. 
+In the later version of the app, different file format and delimiter will be handled by the csv module reader. 
 
 
 ## Enjoy ! 
