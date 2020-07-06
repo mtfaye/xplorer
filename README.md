@@ -3,7 +3,7 @@ v 0.01 alpha.
 
 
 ## Package content 
-	
+
 	
 		├──.vscode
 		│
@@ -23,9 +23,10 @@ v 0.01 alpha.
 		│  
 		├── requirements.txt   # Bucket of all dependencies
 		│ 
-		├── profiler.py   # Main module of the profiler  
+		├── profiler.py   # Main module of the profiler  c
 		│ 
 		├── setup.py   # Installer module
+
 
 
 ## Prerequisites 
@@ -34,6 +35,7 @@ Make sure to have the latest [pip](https://pip.pypa.io/en/stable/), [Git](https:
 
 
 ## Set up 
+
 
 From comnand line :
 
@@ -45,7 +47,7 @@ From comnand line :
 
 4. Activate it :  ``` $ venv\scripts\activate ```
 
-5. Install now the necessary dependencies :  ``` $ (venv) pip install -r requirements.txt ```
+5. Install now the necessary dependencies : ``` $ (venv) pip install -r requirements.txt ```
 		
 	     
 ## Run it 
