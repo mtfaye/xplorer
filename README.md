@@ -91,9 +91,8 @@ From comnand line :
 
 ## Note
 
-This alpha version of the app only reads CSV files with"|" seperator and headers. 
-The lack of a standard from the files produced by our customers makes it annoying to build a sophisticated module that process CSV files from multiple sources. Still, while the delimiters and quoting characters vary, the overall format is similar enough that it is possible to write a single module which can efficiently manipulate such data. If the user of this app is comfortable enough with python, he can for now modify the code accordingly to his needs. 
-In the later version of the app, different file format and delimiter will be handled by the csv function reader. 
+This alpha version of the app only reads CSV files with "|" seperator and headers. 
+The lack of a standardized source file makes it annoying to build a sophisticated module that process CSV files of any types. Still, while the delimiters and quoting characters vary, the overall format is similar enough that it is possible to write a single module which can efficiently manipulate such data. If the user is comfortable enough with python, he can for now modify the code accordingly to his needs but in the later version of the app, different file format and delimiter will be handled by the csv reader function. 
 
 
 ## Enjoy ! 
