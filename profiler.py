@@ -66,6 +66,7 @@ class Profiler:
         clean_df = processed_df(read_file)      
         log_ = log_num(num(clean_df))
         hist(log_, outfile)
+        
              
 if __name__ == "__main__":
     Profiler().build_report(file)

@@ -9,9 +9,13 @@ def df(file, chunksize):
     """Takes csv files and returns a pandas dataframe.
     """ 
     print('Reading data...')
-    reader = pd.read_csv(file, sep="|", chunksize=chunksize, iterator=True)  
+    reader = pd.read_csv(file, 
+                         sep="|",
+                         chunksize=chunksize,
+                         iterator=True)  
     data = pd.concat(reader, ignore_index=True)
     return data
+
  
 def read_sql(server, database, username, password):
     """Read tables from a remote sql database and returns a pandas dataframe.
@@ -24,6 +28,7 @@ def read_sql(server, database, username, password):
     sql_df = pd.read_sql_query(query,con)
     return sql_df
 
+
 def processed_df(df):
     """Removes weird characters from column names.
     """
@@ -31,11 +36,13 @@ def processed_df(df):
     df.columns = df.columns.str.strip().str.replace('/', '_').str.replace('(', '').str.replace(')', '')
     return df
 
+
 def num(processed_df):
     """Returns dataframe object with numerical columns only.
     """
     num_df = [col for col in processed_df.columns if processed_df[col].dtype != 'object']
     return processed_df[num_df]
+
     
 def cat(processed_df):
     """Returns dataframe object with categorical columns only. 
@@ -55,6 +62,7 @@ def summary(processed_df, num, cat):
              '% of Missing': processed_df.isnull().sum().sum() / len(processed_df)}]
     return pd.DataFrame(_dict)
 
+
 def stats(processed_df):
     """ Takes a dataframe object and returns a dpd Data Profile (Dataframe).
     """
@@ -67,6 +75,7 @@ def stats(processed_df):
     desc = processed_df.describe().T.round(2)
     dpd = pd.merge(dpd, desc, how='left', left_on='column_name', right_index=True)
     return dpd
+
  
 def duplicates(processed_df):
     """Returns a dataframe with dupilcated rows
@@ -74,6 +83,7 @@ def duplicates(processed_df):
     dup_bool = processed_df.duplicated(subset=None, keep='first')
     dup = processed_df.loc[dup_bool == True]
     return dup
+
    
 def log_num(num):
     """Returns a log values of a pandas series
@@ -88,6 +98,7 @@ def sampling(processed_df, sample_size):
     return: dataframe size of the sampling.
     """
     return processed_df.sample(sample_size)
+
     
 def simple_corr(sampling):
     """Takes a dataframe a return table of pearson correlation between numerical variables.
@@ -112,6 +123,7 @@ def _corr(_encoder, col, k):
     c = _encoder.corr().nlargest(k, col)[col].index
     cm = _encoder[c].corr().round(2)
     return cm  
+
 
 def toExcel(summary, stats, duplicates, simple_corr, _corr, dir_path):
     """Takes processed_df and writes excel file to a specific directory.

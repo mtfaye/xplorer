@@ -19,6 +19,7 @@ def hist(num, dir_path):
         fig.set_size_inches(22,14)
         plt.savefig(dir_path/'{}'.format(col), bbox_inches='tight')
 
+
 def bar(cat, dir_path):
     """Writes png files for each value.
     """ 
@@ -30,6 +31,7 @@ def bar(cat, dir_path):
         fig.set_size_inches(22,14)
         plt.savefig(dir_path/'{}'.format(col), bbox_inches='tight')
     print('Done.')
+    
     
 def filter_five(cat, dir_path):
     """Writes png files for each value.
@@ -43,6 +45,7 @@ def filter_five(cat, dir_path):
         plt.savefig(dir_path/'{}'.format(col), bbox_inches='tight')
     print('Done.')
     
+    
 def filter_eight(cat, dir_path):
     """Writes png files for each value.
     """ 
@@ -55,6 +58,7 @@ def filter_eight(cat, dir_path):
         plt.savefig(dir_path/'{}'.format(col), bbox_inches='tight')
     print('Done.')
       
+      
 def filter_ten(cat, dir_path):
     """Writes png files for each value.
     """ 
@@ -66,6 +70,7 @@ def filter_ten(cat, dir_path):
         fig.set_size_inches(22,14)
         plt.savefig(dir_path/'{}'.format(col), bbox_inches='tight')
     print('Done.')
+    
     
 def plot_corr(_corr, dir_path):
     '''Function plots a graphical correlation matrix for each pair of columns in the dataframe.
