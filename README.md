@@ -89,6 +89,10 @@ From comnand line :
 			>>> pr.Profiler().corr_viz(file) 
 
 
+
+## Contributions 
+For Contributions see the Wiki [Contribution Guidelines]()
+
 ## Note
 
 This alpha version of the app only reads CSV files with "|" seperator and headers. 
