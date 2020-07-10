@@ -1,9 +1,9 @@
 # Profiler tool 
 v 0.01 alpha.
 
-This alpha version of the app only reads CSV files with "|" seperator and headers. 
+This alpha version of the app reads only CSV files with "|" seperator and headers. 
 The lack of a standardized source file makes it annoying to build a sophisticated module that process CSV files of any types. Still, while the delimiters and quoting characters vary, the overall format is similar enough that it is possible to write a single module which can efficiently manipulate such data. 
-If the user of this application is comfortable enough with source code, he can go under scr directory on utils python and under the df he can hardcode the delimiter before running it.
+If the user of this application is comfortable enough with the source code, he can go into the src directory on the utils python file and hard code the delimiter under the df function.
 
 
 ## Package content 
