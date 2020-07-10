@@ -96,18 +96,44 @@ From comnand line :
 
 ## Contributions 
 
-See the wiki for [Contributions Guideline](https://dev.azure.com/ResolutionDevops/Profiler/_wiki/wikis/Profiler.wiki/1/Contributions-Guideline)
+# Contributing Documentation Changes
+
+Documentation improvements are always welcome! The documentation files live in the docs/ directory of the codebase. They’re written using Microsoft Word but it can be written in any type of text file, Markdown and Microsoft Word are the preferred one though.
+
+When presenting Python code in documents, use single-quoted strings ('hello' instead of "hello").
 
 
-## Bugs report
+# Contributing code changes
 
-For bugs create an Issue as work item and document the context of the issue. 
-For more about bugs reporting see also the wiki [Contributions Guideline](https://dev.azure.com/ResolutionDevops/Profiler/_wiki/wikis/Profiler.wiki/1/Contributions-Guideline)
+When contributing code, you’ll want to follow this checklist :
+- 1. Fork the project repository at [master branch Repos](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler)if you haven't already.
+- 2. Clone your fork in your Virtual Machine.
+- 3. Create a new branch (Best Practices : never work on the master branch).
+- 4. After writing your codes, push commits to the branch created (Always use  the file dev-requirements.txt when developing or running test).
+- 5. Consider whether documentation or tests need to be added or updated as part of the change, and add them as needed.
+- 6. Send a pull request to the main repository’s [master branch](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler.) (Only in special cases would the Pull Request be opened against other branches.)
 
+# Bug Reports
+
+Bug reports are hugely important! Before you raise one, though, please verify if the same bug hasn’t been reported before.
+Now to report bugs create a work item  Issue on the current Sprint. Describe the bug by writing a user story on the description area.
+Use the template below to report a bug :
+
+- ### Scenario: 
+Explain the context of the bug by listing the steps taken that raised the bug. 
+- ### Current Behavior: 
+Explain the bug and write a snippet of the error message if possible.
+- ### Expected Behavior:
+Explain what you were trying to accomplish or what you were expecting to see as a result. 
+
+
+# Coding Style
+The codebase of this project was built using the style guide for Python code PEP-8. To ensure an uniformity of code for the project, please try following the same coding style as much as possible. 
+For more about PEP-8 see  [Link](https://www.python.org/dev/peps/pep-0008/).
 
 
 
 ## Enjoy ! 
 
 
-contact @mouhameth.faye@resolutioninc.ca
+For more contact @mouhameth.faye@resolutioninc.ca
