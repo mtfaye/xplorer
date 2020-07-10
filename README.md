@@ -103,7 +103,7 @@ Documentation improvements are always welcome! The documentation files live in t
 When presenting Python code in documents, use single-quoted strings ('hello' instead of "hello").
 
 
-## Contributing code changes
+## Contributing Code Changes
 
 When contributing code, you’ll want to follow this checklist :
 - 1. Fork the project repository at [master branch Repos](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler)if you haven't already.
