@@ -16,7 +16,7 @@ setup(
         'Programming Language :: Python :: 3.7',
         'Topic :: Data Analysis :: Data Wrangling :: Data Transformation',
         'License :: Not Licensed yet',
-        'Operating System :: OS Independent, just update path format on config.py for Windows.'
+        'Operating System :: OS Independent, just update your path format when using windows or unix.'
     ],
     keywords='Data Profiler',
     author='Resolution Inc',
