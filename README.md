@@ -1,6 +1,10 @@
 # Profiler tool 
 v 0.01 alpha.
 
+This alpha version of the app only reads CSV files with "|" seperator and headers. 
+The lack of a standardized source file makes it annoying to build a sophisticated module that process CSV files of any types. Still, while the delimiters and quoting characters vary, the overall format is similar enough that it is possible to write a single module which can efficiently manipulate such data. 
+If the user of this application is comfortable enough with source code, he can go under scr directory on utils python and under the df he can hardcode the delimiter before running it.
+
 
 ## Package content 
 
@@ -93,10 +97,6 @@ From comnand line :
 ## Contributions 
 For Contributions see the Wiki [Contributions Guideline](https://dev.azure.com/ResolutionDevops/Profiler/_wiki/wikis/Profiler.wiki/1/Contributions-Guideline)
 
-## Note
-
-This alpha version of the app only reads CSV files with "|" seperator and headers. 
-The lack of a standardized source file makes it annoying to build a sophisticated module that process CSV files of any types. Still, while the delimiters and quoting characters vary, the overall format is similar enough that it is possible to write a single module which can efficiently manipulate such data. If the user is comfortable enough with python, he can for now modify the code accordingly to his needs but in the later version of the app, different file format and delimiter will be handled by the csv reader function. 
 
 
 ## Enjoy ! 
