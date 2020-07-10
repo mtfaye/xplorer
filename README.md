@@ -94,16 +94,16 @@ From comnand line :
 
 
 
-## Contributions 
 
-# Contributing Documentation Changes
+
+## Contributing Documentation Changes
 
 Documentation improvements are always welcome! The documentation files live in the docs/ directory of the codebase. They’re written using Microsoft Word but it can be written in any type of text file, Markdown and Microsoft Word are the preferred one though.
 
 When presenting Python code in documents, use single-quoted strings ('hello' instead of "hello").
 
 
-# Contributing code changes
+## Contributing code changes
 
 When contributing code, you’ll want to follow this checklist :
 - 1. Fork the project repository at [master branch Repos](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler)if you haven't already.
@@ -113,7 +113,7 @@ When contributing code, you’ll want to follow this checklist :
 - 5. Consider whether documentation or tests need to be added or updated as part of the change, and add them as needed.
 - 6. Send a pull request to the main repository’s [master branch](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler.) (Only in special cases would the Pull Request be opened against other branches.)
 
-# Bug Reports
+## Bug Reports
 
 Bug reports are hugely important! Before you raise one, though, please verify if the same bug hasn’t been reported before.
 Now to report bugs create a work item  Issue on the current Sprint. Describe the bug by writing a user story on the description area.
@@ -127,7 +127,7 @@ Explain the bug and write a snippet of the error message if possible.
 Explain what you were trying to accomplish or what you were expecting to see as a result. 
 
 
-# Coding Style
+## Coding Style
 The codebase of this project was built using the style guide for Python code PEP-8. To ensure an uniformity of code for the project, please try following the same coding style as much as possible. 
 For more about PEP-8 see  [Link](https://www.python.org/dev/peps/pep-0008/).
 
