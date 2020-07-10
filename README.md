@@ -99,7 +99,15 @@ From comnand line :
 See the wiki for [Contributions Guideline](https://dev.azure.com/ResolutionDevops/Profiler/_wiki/wikis/Profiler.wiki/1/Contributions-Guideline)
 
 
+## Bugs report
+
+For bugs create an Issue as work item and document the context of issue. 
+For more about bug reporting see also the wiki [Contributions Guideline](https://dev.azure.com/ResolutionDevops/Profiler/_wiki/wikis/Profiler.wiki/1/Contributions-Guideline)
+
+
+
 
 ## Enjoy ! 
 
-For bugs contact @mouhameth.faye@resolutioninc.ca
+
+contact @mouhameth.faye@resolutioninc.ca
