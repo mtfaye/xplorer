@@ -145,3 +145,6 @@ def toExcel(summary, stats, duplicates, simple_corr, _corr, dir_path):
     _corr.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 25, startcol=0)
     writer.close()
     print('Done.')
+
+def sep():
+    pass
