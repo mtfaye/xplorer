@@ -95,7 +95,8 @@ From comnand line :
 
 
 ## Contributions 
-For Contributions see the Wiki [Contributions Guideline](https://dev.azure.com/ResolutionDevops/Profiler/_wiki/wikis/Profiler.wiki/1/Contributions-Guideline)
+
+See the wiki for [Contributions Guideline](https://dev.azure.com/ResolutionDevops/Profiler/_wiki/wikis/Profiler.wiki/1/Contributions-Guideline)
 
 
 
