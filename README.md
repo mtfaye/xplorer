@@ -109,7 +109,7 @@ When contributing code, you’ll want to follow this checklist :
 - 1. Fork the project repository at [master branch Repos](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler)if you haven't already.
 - 2. Clone your fork in your Virtual Machine.
 - 3. Create a new branch (Best Practices : never work on the master branch).
-- 4. After writing your codes, push commits to the branch created (Always use  the file dev-requirements.txt when developing or running test).
+- 4. After writing your codes, push commits to the branch created (Always use  the file dev-requirements.txt when developing or running a test).
 - 5. Consider whether documentation or tests need to be added or updated as part of the change, and add them as needed.
 - 6. Send a pull request to the main repository’s [master branch](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler.) (Only in special cases would the Pull Request be opened against other branches.)
 
@@ -122,13 +122,13 @@ Use the template below to report a bug :
 - ### Scenario: 
 Explain the context of the bug by listing the steps taken that raised the bug. 
 - ### Current Behavior: 
-Explain the bug and write a snippet of the error message if possible.
+Explain the bug and provide the error message if possible.
 - ### Expected Behavior:
 Explain what you were trying to accomplish or what you were expecting to see as a result. 
 
 
 ## Coding Style
-The codebase of this project was built using the style guide for Python code PEP-8. To ensure an uniformity of code for the project, please try following the same coding style as much as possible. 
+The codebase of this project was built using the style guide for Python code PEP-8. To ensure an uniformity of code for the project, please try to follow the same coding style as much as possible. 
 For more about PEP-8 see  [Link](https://www.python.org/dev/peps/pep-0008/).
 
 
@@ -136,4 +136,4 @@ For more about PEP-8 see  [Link](https://www.python.org/dev/peps/pep-0008/).
 ## Enjoy ! 
 
 
-For more contact @mouhameth.faye@resolutioninc.ca
+Contact maintainer @mouhameth.faye@resolutioninc.ca
