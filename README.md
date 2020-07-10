@@ -38,7 +38,7 @@ If the user of this application is comfortable enough with the source code, he c
 Make sure to have the latest [pip](https://pip.pypa.io/en/stable/), [Git](https://git-scm.com/downloads) and [Python3+](https://www.python.org/downloads/) installed in your VM. 
 
 
-## Set up 
+## Setup 
 
 
 From comnand line :
