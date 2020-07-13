@@ -45,7 +45,7 @@ From comnand line :
 
 1. Clone the repo :  ``` $ git clone https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler```
 
-2. Go into the working directory : ``` $ cd Profiler/ ```
+2. Go into the working directory : ``` $ cd Profiler ```
 
 3. Create a virtual environment venv :  ``` $ py -m venv venv ```
 
