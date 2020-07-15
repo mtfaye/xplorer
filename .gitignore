@@ -7,3 +7,4 @@ src/.idea/
 src/.ipynb_checkpoints/
 src/.vscode/
 src/__pycache__/
+.env/
