@@ -4,19 +4,19 @@ from src.config import outfile, file
 from src.plot_helpers import bar, filter_eight, filter_five, filter_ten, hist, plot_corr
 from src.utils import (cat, df, duplicates, log_num, num, processed_df,
                        read_sql, stats, summary, toExcel, sampling, simple_corr, _corr, _encoder)
+import scripts.fhandler
 
 
 class Profiler:
     
     def __init__(self):
         print('Profilage de donnees v0.01 Alpha')
-        self.chunksize = 300000
         self.sample_size = 1000
         self.n_highest = 30
         self.col = "Amount"
             
     def build_report(self, file):
-        read_file = df(file, self.chunksize)
+        read_file = _fHandler(file)
         clean_df = processed_df(read_file)
         is_summary = summary(clean_df, num(clean_df), cat(clean_df))
         is_stats = stats(clean_df)
@@ -28,13 +28,13 @@ class Profiler:
         toExcel(is_summary, is_stats, is_dup, scorr, is_corr, outfile)
         
     def print_graphs(self, file):
-        read_file = df(file, self.chunksize)
+        read_file = _fHandler(file)
         clean_df = processed_df(read_file)
         hist(num(clean_df), outfile)
         filter_ten(cat(clean_df), outfile)
     
     def f_five(self, file):
-        read_file = df(file, self.chunksize)
+        read_file = _fHandler(file)
         clean_df = processed_df(read_file)
         filter_five(cat(clean_df), outfile)
    
@@ -44,7 +44,7 @@ class Profiler:
         filter_eight(cat(clean_df), outfile)
              
     def print_all(self, file):
-        read_file = df(file, self.chunksize)
+        read_file = _fHandler(file)
         clean_df = processed_df(read_file)
         is_samp = sampling(clean_df, self.sample_size)
         is_dum = _encoder(is_samp)
@@ -54,7 +54,7 @@ class Profiler:
         plot_corr(is_corr, outfile)
         
     def corr_viz(self, file):
-        read_file = df(file, self.chunksize)
+        read_file = _fHandler(file)
         clean_df = processed_df(read_file)
         is_samp = sampling(clean_df, self.sample_size)
         is_dum = _encoder(is_samp)
@@ -62,7 +62,7 @@ class Profiler:
         plot_corr(is_corr, outfile)
 
     def log(self, file):
-        read_file = df(file, self.chunksize)
+        read_file = _fHandler(file)
         clean_df = processed_df(read_file)      
         log_ = log_num(num(clean_df))
         hist(log_, outfile)

@@ -18,7 +18,6 @@ def test_dfSize(result_fixture):
     """ Checks if dataframe has over 300000 rows.
     because the default chunksize for reading a csv file is 300000.
     """
-    
     def is_df_big(result_fixture):
         if len(result_fixture) > 300000:
             return True
