@@ -1,4 +1,5 @@
-"""Utility fonctions for statistical description of datasets."""
+"""Utility fonctions for statistical description of datasets.
+"""
 
 import numpy as np
 import pandas as pd
@@ -10,7 +11,7 @@ def df(file, chunksize):
     """ 
     print('Reading data...')
     reader = pd.read_csv(file, 
-                         sep="|",
+                         sep='|',
                          chunksize=chunksize,
                          iterator=True)  
     data = pd.concat(reader, ignore_index=True)
@@ -145,6 +146,7 @@ def toExcel(summary, stats, duplicates, simple_corr, _corr, dir_path):
     _corr.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 25, startcol=0)
     writer.close()
     print('Done.')
+
 
 def sep():
     pass

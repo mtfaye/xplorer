@@ -8,3 +8,5 @@ src/.ipynb_checkpoints/
 src/.vscode/
 src/__pycache__/
 .env/
+scripts/__pycache__/
+.venv/
