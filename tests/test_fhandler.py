@@ -1,5 +1,5 @@
 """Unit testing for files extension
-   Could test all extension, but going to test only the most used ones for now: CSV and JSON.
+   Could test all extensions, but going to test only the most used ones for now: CSV and JSON.
 """
 
 import pandas as pd
