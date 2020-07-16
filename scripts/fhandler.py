@@ -1,7 +1,8 @@
 """ Different files extension handler.
 """
-import src.utils 
 from pathlib import Path
+import pandas as pd
+import warnings
 
 
 def warn_read(extension):
@@ -15,17 +16,19 @@ To prevent this warning from showing up, please rename the file to any of the ex
          """)
 
 
-def _fHandler(file_name: Path):
-    """Read DataFrame based on the file extension. Various file types are supported (.csv, .json, .jsonl,.xls, .xlsx, .hdf, .h5, .pkl, .pickle)
+def _fHandler(file_name):
+    """Read DataFrame based on the file extension. 
+    Various file types are supported (.csv, .json, .jsonl,.xls, .xlsx, .hdf, .h5, .pkl, .pickle)
     Args:
         file_name: the file to read
     Returns:
         DataFrame
     """
-    extension = file_name.suffix.lower()
-    if extension == ".json":
+    import os.path
+    extension = os.path.splitext(file_name)[1]
+    if extension == '.json':
         df = pd.read_json(str(file_name))
-    elif extension == ".jsonl":
+    elif extension == '.jsonl':
         df = pd.read_json(str(file_name), lines=True)
     elif extension in [".xls", ".xlsx"]:
         df = pd.read_excel(str(file_name))
@@ -37,5 +40,5 @@ def _fHandler(file_name: Path):
         if extension != ".csv":
             warn_read(extension)
             
-        df = pd.read_csv(str(file_name), sep='|')
+        df = pd.read_csv(file_name, sep='|')
     return df

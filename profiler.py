@@ -1,10 +1,12 @@
 """Common part to all others modules : Profiler main class"""
 
-from src.config import outfile, file
-from src.plot_helpers import bar, filter_eight, filter_five, filter_ten, hist, plot_corr
-from src.utils import (cat, df, duplicates, log_num, num, processed_df,
-                       read_sql, stats, summary, toExcel, sampling, simple_corr, _corr, _encoder)
-import scripts.fhandler
+from scripts.fhandler import _fHandler
+from src.config import file, outfile
+from src.plot_helpers import (
+    bar, filter_eight, filter_five, filter_ten, hist, plot_corr)
+from src.utils import (_corr, _encoder, cat, df, duplicates, log_num, num,
+                       processed_df, read_sql, sampling, simple_corr, stats,
+                       summary, toExcel)
 
 
 class Profiler:
@@ -13,7 +15,7 @@ class Profiler:
         print('Profilage de donnees v0.01 Alpha')
         self.sample_size = 1000
         self.n_highest = 30
-        self.col = "Amount"
+        self.col = 'Amount'
             
     def build_report(self, file):
         read_file = _fHandler(file)
@@ -68,7 +70,7 @@ class Profiler:
         hist(log_, outfile)
         
              
-if __name__ == "__main__":
+if __name__ == '__main__':
     Profiler().build_report(file)
     Profiler().print_graphs(file)
     Profiler().f_five(file)

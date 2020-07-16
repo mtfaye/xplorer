@@ -11,7 +11,7 @@ def df(file, chunksize):
     """ 
     print('Reading data...')
     reader = pd.read_csv(file, 
-                         sep="|",
+                         sep='|',
                          chunksize=chunksize,
                          iterator=True)  
     data = pd.concat(reader, ignore_index=True)

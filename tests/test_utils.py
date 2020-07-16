@@ -1,9 +1,8 @@
 """Testing code for the utils fonctions. 
 """
-from unittest.mock import Mock    
+import pandas
 import pytest
-import src.utils 
-import pandas 
+import src.utils
 
 
 @pytest.fixture(scope="session")
