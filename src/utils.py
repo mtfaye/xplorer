@@ -67,9 +67,12 @@ def summary(processed_df, num, cat):
 def stats(processed_df):
     """ Takes a dataframe object and returns a dpd Data Profile (Dataframe).
     """
-    dpd = pd.DataFrame(index=np.arange(0, len(processed_df.columns)), columns=('column_name', 'col_data_type', 'unique_values_count',  'non_null_values'))
+    dpd = pd.DataFrame(index=np.arange(0, len(processed_df.columns)), columns=('column_name', 'col_data_type', 'unique_values_count', 'non_unique_values_count', 'non_null_values'))
     for ind, cols in enumerate(processed_df.columns):
-        dpd.loc[ind] = [cols, processed_df[cols].dtype, processed_df[cols].nunique(), processed_df[cols].count()]
+        dpd.loc[ind] = [cols, processed_df[cols].dtype,
+                         processed_df[cols].nunique(),
+                         processed_df.shape[0] - processed_df[cols].nunique(),
+                         processed_df[cols].count()]
     dpd['%_of_non_nulls'] = (dpd['non_null_values'] / processed_df.shape[0]) * 100 
     dpd['null_values'] = processed_df.shape[0] - dpd['non_null_values']
     dpd['%_of_nulls'] = 100 - dpd['%_of_non_nulls']
