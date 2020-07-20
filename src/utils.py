@@ -168,7 +168,7 @@ def toExcel(summary,
             simple_corr, 
             correlor, 
             dir_path):
-    """Takes processed_df and writes excel file to a specific directory.
+    """Takes df and writes excel file to a specific directory.
     """  
     print('Writing report...')    
     writer = pd.ExcelWriter(dir_path/'your_report.xlsx', engine='xlsxwriter' )
@@ -183,7 +183,18 @@ def toExcel(summary,
     duplicates.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 10, startcol=0)
     worksheet.write_string(stats.shape[0] + 14, 0, 'Coef Correlation between Numerical Variables')
     simple_corr.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 15, startcol=0)
-    worksheet.write_string(stats.shape[0] + 24, 0, 'Coef Correlation between Categorical variables and a chosen target variable')
-    correlor.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 25, startcol=0)
+    writer.close()
+    print('Done.')
+
+
+def gbyExcel(df, dir_path):
+    """Takes processed_df and writes excel file to a specific directory.
+    """   
+    writer = pd.ExcelWriter(dir_path/'Groupby_analysis.xlsx', engine='xlsxwriter' )
+    workbook = writer.book
+    worksheet = workbook.add_worksheet('Groupby_analysis')
+    writer.sheets['Groupby_analysis'] = worksheet
+    worksheet.write_string(0, 0, 'Groupby Analysis')
+    df.to_excel(writer, sheet_name = 'Groupby Analysis', startrow=1, startcol=0)
     writer.close()
     print('Done.')

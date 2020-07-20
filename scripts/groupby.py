@@ -29,4 +29,4 @@ def gbyselectnum(df, y, z):
           z = column name in string numerical column only.
     Returns: Dataframe
     """
-    return df.y.groupby(z).mean()
+    pass

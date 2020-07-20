@@ -7,8 +7,8 @@ from src.plot_helpers import (
     bar, filter_eight, filter_five, filter_ten, hist, plotSimplecorr)
 from src.utils import (
     cat, correlor, duplicates, enCoder, log_num, num, processed_df, read_csv,
-    read_sql, sampling, simple_corr, stats, summary, toExcel)
-
+    read_sql, sampling, simple_corr, stats, summary, toExcel, gbyExcel)
+from scripts.groupby import gbyone, gbytwo, gbyselectnum
 
 class Profiler:
     
@@ -69,6 +69,25 @@ class Profiler:
         clean_df = processed_df(read_file)      
         log_ = log_num(num(clean_df))
         hist(log_, outfile)
+    
+    def groupbyone(file):
+        read_file = fHandler(file)
+        clean_df = processed_df(read_file)
+        analysis = gbyone(clean_df)
+        gbyExcel(analysis, outfile)
+    
+    def groupbytwo(file):
+        read_file = fHandler(file)
+        clean_df = processed_df(read_file)
+        analysis = gbytwo(clean_df)
+        gbyExcel(analysis, outfile)
+    
+    def groupbyselect(file):
+        read_file = fHandler(file)
+        clean_df = processed_df(read_file)
+        analysis = gbyselectnum(clean_df)
+        gbyExcel(analysis, outfile)
+        
         
 
 if __name__ == '__main__':
@@ -79,4 +98,8 @@ if __name__ == '__main__':
     Profiler().print_all(file)
     Profiler().log(file)   
     Profiler().corr_viz(file)
+    Profiler().groupbyone(file)
+    Profiler().groupbytwo(file)
+    Profiler().groupbyselect(file)
+    
     
