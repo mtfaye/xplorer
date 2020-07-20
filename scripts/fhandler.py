@@ -1,6 +1,5 @@
 """ Different files extension handler.
 """
-from pathlib import Path
 import pandas as pd
 import warnings
 
@@ -16,29 +15,29 @@ To prevent this warning from showing up, please rename the file to any of the ex
          """)
 
 
-def _fHandler(file_name):
+def fHandler(filename):
     """Read DataFrame based on the file extension. 
     Various file types are supported (.csv, .json, .jsonl,.xls, .xlsx, .hdf, .h5, .pkl, .pickle)
     Args:
-        file_name: the file to read
+        filename: the file to read
     Returns:
         DataFrame
     """
     import os.path
-    extension = os.path.splitext(file_name)[1]
+    extension = os.path.splitext(filename)[1]
     if extension == '.json':
-        df = pd.read_json(str(file_name))
+        df = pd.read_json(str(filename))
     elif extension == '.jsonl':
-        df = pd.read_json(str(file_name), lines=True)
+        df = pd.read_json(str(filename), lines=True)
     elif extension in [".xls", ".xlsx"]:
-        df = pd.read_excel(str(file_name))
+        df = pd.read_excel(str(filename))
     elif extension in [".hdf", ".h5"]:
-        df = pd.read_hdf(str(file_name))
+        df = pd.read_hdf(str(filename))
     elif extension in [".pkl", ".pickle"]:
-        df = pd.read_pickle(str(file_name))
+        df = pd.read_pickle(str(filename))
     else:
         if extension != ".csv":
             warn_read(extension)
             
-        df = pd.read_csv(file_name, sep='|')
+        df = pd.read_csv(filename, sep='|')
     return df

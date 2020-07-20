@@ -1,21 +1,32 @@
+"""Groupby functions.
+"""
+
 import pandas as pd 
 
-df = pd.DataFrame(dict(A=['coke', 'sprite', 'coke', 'sprite',
-                          'sprite', 'coke', 'coke'],
-                       B=['alpha','gamma', 'alpha', 'beta',
-                          'gamma', 'beta', 'beta'],
-                       col_1=[1,2,3,4,5,6,7],
-                       col_2=[1,6,2,4,7,9,3]))
 
-def groupbyHelper(df, v, x, y, z):
-    """ Calculates 2x2 groupby functions of four given column.
-    Args:
-    Column name in string.
-    Returns:
-    Dataframe
+def gbyone(df, i):
+    """ Calculates groupby functions of one given categorical column with all the numerical column of dataframe.
+    Args: df = dataframe, 
+           i = column name in string - categotical column only. 
+    Returns: Dataframe
     """
-    df_groupby = df[[v, x]].groupby([y, z]).mean()
-    return df_groupby
+    return df.groupby(i).mean()
 
-groupbyHelper(df, 'A', 'B', 'col_1', 'col_2')
 
+def gbytwo(df, v, x):
+    """ Calculates groupby functions of two given categorical column with all the numerical column of dataframe.
+    Args: df = dataframe, 
+          v, x = column name in string categorical column only. 
+    Returns: Dataframe
+    """
+    return df.groupby([v, x]).mean()
+   
+
+def gbyselectnum(df, y, z):
+     """ Calculates groupby functions of one given categorical column with one given numerical column.
+    Args: df = dataframe, 
+          y = column name in string categorical column only. 
+          z = column name in string numerical column only.
+    Returns: Dataframe
+    """
+    return df.y.groupby(z).mean()

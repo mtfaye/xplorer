@@ -16,4 +16,4 @@ password = '##################'
 tablename = '##################'
 
 # You can initialize the csv file path from here
-file = "Path in string"
+filepath = "Path in string"

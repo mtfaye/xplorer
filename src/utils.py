@@ -6,20 +6,28 @@ import pandas as pd
 import pyodbc
 
 
-def df(file, chunksize):
+
+def read_csv(filepath, chunksize):
     """Takes csv files and returns a pandas dataframe.
+    Args: filepath = Path of the csv file in string.
+          chunksize = number or rows selected for the reading iterator, in integer. 
+    Returns: 
+           Pandas dataframe.
     """ 
     print('Reading data...')
-    reader = pd.read_csv(file, 
+    reader = pd.read_csv(filepath, 
                          sep='|',
                          chunksize=chunksize,
                          iterator=True)  
-    data = pd.concat(reader, ignore_index=True)
-    return data
+    return pd.concat(reader, ignore_index=True)
+    
 
- 
 def read_sql(server, database, username, password):
     """Read tables from a remote sql database and returns a pandas dataframe.
+    Args: server, database, username, password = all in string.
+    Returns: 
+           Pandas dataframe.
+    
     """        
     con = pyodbc.connect('DRIVER={ODBC Driver 17 for SQL Server};SERVER='+server+
                             ';DATABASE='+database+
@@ -32,104 +40,134 @@ def read_sql(server, database, username, password):
 
 def processed_df(df):
     """Removes weird characters from column names.
+    Args: Pandas dataframe. 
+    Returns: 
+           Pandas dataframe.
     """
     print('Computing stats...')
     df.columns = df.columns.str.strip().str.replace('/', '_').str.replace('(', '').str.replace(')', '')
     return df
 
 
-def num(processed_df):
+def num(df):
     """Returns dataframe object with numerical columns only.
+    Args: Pandas dataframe. 
+    Returns: 
+           Pandas dataframe.    
     """
-    num_df = [col for col in processed_df.columns if processed_df[col].dtype != 'object']
-    return processed_df[num_df]
+    num_df = [col for col in df.columns if df[col].dtype != 'object']
+    return df[num_df]
 
     
-def cat(processed_df):
+def cat(df):
     """Returns dataframe object with categorical columns only. 
+    Args: Pandas dataframe. 
+    Returns: 
+           Pandas dataframe.
     """
-    cat_df = [col for col in processed_df.columns if processed_df[col].dtype == 'object']
-    return processed_df[cat_df]
+    cat_df = [col for col in df.columns if df[col].dtype == 'object']
+    return df[cat_df]
 
 
-def summary(processed_df, num, cat):
+def summary(df, num, cat):
     """ Resumes the dataset.
+    Args: df, num and cat are all Pandas dataframe. 
+    Returns: 
+           Pandas dataframe.
     """
-    _dict = [{'Rows': processed_df.shape[0], 
-             'Variables': processed_df.shape[1],
+    _dict = [{'Rows': df.shape[0], 
+             'Variables': df.shape[1],
              'Numerical': len(num.columns), 
              'Categorical': len(cat.columns), 
-             'Missing': processed_df.isnull().sum().sum(),
-             '% of Missing': processed_df.isnull().sum().sum() / len(processed_df)}]
+             'Missing': df.isnull().sum().sum(),
+             '% of Missing': df.isnull().sum().sum() / len(df)}]
     return pd.DataFrame(_dict)
 
 
-def stats(processed_df):
+def stats(df):
     """ Takes a dataframe object and returns a dpd Data Profile (Dataframe).
+    Args: df = Pandas dataframe. 
+    Returns: 
+           Pandas dataframe.
     """
-    dpd = pd.DataFrame(index=np.arange(0, len(processed_df.columns)), columns=('column_name', 'col_data_type', 'unique_values_count', 'non_unique_values_count', 'non_null_values'))
-    for ind, cols in enumerate(processed_df.columns):
-        dpd.loc[ind] = [cols, processed_df[cols].dtype,
-                         processed_df[cols].nunique(),
-                         processed_df.shape[0] - processed_df[cols].nunique(),
-                         processed_df[cols].count()]
-    dpd['%_of_non_nulls'] = (dpd['non_null_values'] / processed_df.shape[0]) * 100 
-    dpd['null_values'] = processed_df.shape[0] - dpd['non_null_values']
+    dpd = pd.DataFrame(index=np.arange(0, len(df.columns)), 
+                       columns=('column_name', 
+                                'col_data_type', 
+                                'unique_values_count', 
+                                'non_unique_values_count',
+                                'non_null_values'))
+    
+    for ind, cols in enumerate(df.columns):
+        dpd.loc[ind] = [cols, df[cols].dtype,
+                         df[cols].nunique(),
+                         df.shape[0] - df[cols].nunique(),
+                         df[cols].count()
+                         ]
+    dpd['%_of_non_nulls'] = (dpd['non_null_values'] / df.shape[0]) * 100 
+    dpd['null_values'] = df.shape[0] - dpd['non_null_values']
     dpd['%_of_nulls'] = 100 - dpd['%_of_non_nulls']
-    desc = processed_df.describe().T.round(2)
+    desc = df.describe().T.round(2)
     dpd = pd.merge(dpd, desc, how='left', left_on='column_name', right_index=True)
     return dpd
 
  
-def duplicates(processed_df):
-    """Returns a dataframe with dupilcated rows
+def duplicates(df):
+    """Returns a dataframe with dupilcated rows.
+    Args: df = Pandas dataframe. 
+    Returns: 
+           Pandas dataframe.
     """
-    dup_bool = processed_df.duplicated(subset=None, keep='first')
-    dup = processed_df.loc[dup_bool == True]
-    return dup
+    dup_bool = df.duplicated(subset=None, keep='first')
+    return df.loc[dup_bool == True]
 
    
-def log_num(num):
+def log_num(df):
     """Returns a log values of a pandas series
-    args: pd.Series
+    args: df = pd dataframe
     """
-    return np.log10(num)    
+    return np.log10(df)    
 
 
-def sampling(processed_df, sample_size):
+def sampling(df, ss):
     """Sampling the dataset
-    Arg: Dataframe and sample size en Integer
+    Arg: df = Dataframe 
+         ss = sample size in Integer
     return: dataframe size of the sampling.
     """
-    return processed_df.sample(sample_size)
+    return df.sample(ss)
 
     
-def simple_corr(sampling):
+def simple_corr(df):
     """Takes a dataframe a return table of pearson correlation between numerical variables.
     Args: dataframe
     returns: dataframe
     """
-    return sampling.corr(method='pearson')
+    return df.corr(method='pearson')
 
-def _encoder(sampling):
+
+def enCoder(df):
     """Encodes all categorical variables.
     Args: dataframe
     return: dataframe
     """
-    return pd.get_dummies(sampling, columns=None, drop_first=True)
+    return pd.get_dummies(df, columns=None, drop_first=True)
     
-
-def _corr(_encoder, col, k):
+    
+def correlor(df, col, k):
     """Takes the 10 highest corr coeff of a choson variable col. 
     args: dataframe of encoded variables, col : chosen of target variable (string), k : treshold (int)
     return : dataframe
     """
-    c = _encoder.corr().nlargest(k, col)[col].index
-    cm = _encoder[c].corr().round(2)
-    return cm  
-
-
-def toExcel(summary, stats, duplicates, simple_corr, _corr, dir_path):
+    c = df.corr().nlargest(k, col)[col].index
+    return df[c].corr().round(2)
+     
+     
+def toExcel(summary, 
+            stats,
+            duplicates,
+            simple_corr, 
+            correlor, 
+            dir_path):
     """Takes processed_df and writes excel file to a specific directory.
     """  
     print('Writing report...')    
@@ -146,10 +184,6 @@ def toExcel(summary, stats, duplicates, simple_corr, _corr, dir_path):
     worksheet.write_string(stats.shape[0] + 14, 0, 'Coef Correlation between Numerical Variables')
     simple_corr.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 15, startcol=0)
     worksheet.write_string(stats.shape[0] + 24, 0, 'Coef Correlation between Categorical variables and a chosen target variable')
-    _corr.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 25, startcol=0)
+    correlor.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 25, startcol=0)
     writer.close()
     print('Done.')
-
-
-def sep():
-    pass
