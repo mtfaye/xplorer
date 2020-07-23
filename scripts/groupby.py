@@ -20,13 +20,13 @@ def gbytwo(df, v, x):
     Returns: Dataframe
     """
     return df.groupby([v, x]).mean()
-   
+  
 
 def gbyselectnum(df, y, z):
-     """ Calculates groupby functions of one given categorical column with one given numerical column.
+    """ Calculates groupby functions of one given categorical column with one given numerical column.
     Args: df = dataframe, 
           y = column name in string categorical column only. 
           z = column name in string numerical column only.
     Returns: Dataframe
     """
-    pass
+    return df.y.groupby(z).mean()

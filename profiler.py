@@ -10,6 +10,7 @@ from src.utils import (
     read_sql, sampling, simple_corr, stats, summary, toExcel, gbyExcel)
 from scripts.groupby import gbyone, gbytwo, gbyselectnum
 
+
 class Profiler:
     
     def __init__(self):
@@ -17,7 +18,12 @@ class Profiler:
         self.sample_size = 1000
         self.n_highest = 30
         self.col = 'Amount'
-            
+        self.i = None
+        self.v = None
+        self.x = None
+        self.y = None
+        self.z = None
+        
     def build_report(self, file):
         read_file = fHandler(file)
         clean_df = processed_df(read_file)
@@ -70,24 +76,23 @@ class Profiler:
         log_ = log_num(num(clean_df))
         hist(log_, outfile)
     
-    def groupbyone(file):
+    def groupbyone(self, file):
         read_file = fHandler(file)
         clean_df = processed_df(read_file)
-        analysis = gbyone(clean_df)
+        analysis = gbyone(clean_df, self.i)
         gbyExcel(analysis, outfile)
     
-    def groupbytwo(file):
+    def groupbytwo(self, file):
         read_file = fHandler(file)
         clean_df = processed_df(read_file)
-        analysis = gbytwo(clean_df)
+        analysis = gbytwo(clean_df, self.v, self.x)
         gbyExcel(analysis, outfile)
     
-    def groupbyselect(file):
+    def groupbyselect(self, file):
         read_file = fHandler(file)
         clean_df = processed_df(read_file)
-        analysis = gbyselectnum(clean_df)
+        analysis = gbyselectnum(clean_df, self.y, self.z)
         gbyExcel(analysis, outfile)
-        
         
 
 if __name__ == '__main__':

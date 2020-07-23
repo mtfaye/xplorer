@@ -190,11 +190,11 @@ def toExcel(summary,
 def gbyExcel(df, dir_path):
     """Takes processed_df and writes excel file to a specific directory.
     """   
-    writer = pd.ExcelWriter(dir_path/'Groupby_analysis.xlsx', engine='xlsxwriter' )
+    writer = pd.ExcelWriter(dir_path/'Groupby_Analysis.xlsx', engine='xlsxwriter' )
     workbook = writer.book
-    worksheet = workbook.add_worksheet('Groupby_analysis')
-    writer.sheets['Groupby_analysis'] = worksheet
-    worksheet.write_string(0, 0, 'Groupby Analysis')
-    df.to_excel(writer, sheet_name = 'Groupby Analysis', startrow=1, startcol=0)
+    worksheet = workbook.add_worksheet('Groupby_Analysis')
+    writer.sheets['Groupby_Analysis'] = worksheet
+    worksheet.write_string(0, 0, 'Groupby_Analysis')
+    df.to_excel(writer, sheet_name = 'Groupby_Analysis', startrow=1, startcol=0)
     writer.close()
     print('Done.')
