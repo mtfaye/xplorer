@@ -24,6 +24,7 @@ class Profiler:
         self.y = None
         self.z = None
         
+        
     def build_report(self, file):
         read_file = fHandler(file)
         clean_df = processed_df(read_file)
@@ -106,5 +107,4 @@ if __name__ == '__main__':
     Profiler().groupbyone(file)
     Profiler().groupbytwo(file)
     Profiler().groupbyselect(file)
-    
     
