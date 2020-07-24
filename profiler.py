@@ -1,14 +1,14 @@
 """Common part to all others modules : Profiler main class
 """
 
-from scripts.fhandler import fHandler
+from src.fhandler import fHandler
 from src.config import filepath, outfile
 from src.plot_helpers import (
     bar, filter_eight, filter_five, filter_ten, hist, plotSimplecorr)
 from src.utils import (
     cat, correlor, duplicates, enCoder, log_num, num, processed_df, read_csv,
     read_sql, sampling, simple_corr, stats, summary, toExcel, gbyExcel)
-from scripts.groupby import gbyone, gbytwo, gbyselectnum
+from src.groupby import gbyone, gbytwo, gbyselectnum
 import fire
 
 class Profiler:

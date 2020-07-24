@@ -5,7 +5,7 @@
 import pandas as pd
 import pytest
 
-import scripts.fhandler as sf
+import src.fhandler as sf
 
 
 def test_fHandler_csv():
