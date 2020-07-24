@@ -9,7 +9,7 @@ import src.utils
 def result_fixture():
     test_data = r"C:\Users\MouhamethFaye\Documents\demo_package\demo_package\data\Transaction_EN_Final.csv"
     test_chunk = 300000
-    df = src.utils.df(test_data, test_chunk)
+    df = src.utils.read_csv(test_data, test_chunk)
     return df
 
 

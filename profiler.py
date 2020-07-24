@@ -9,7 +9,7 @@ from src.utils import (
     cat, correlor, duplicates, enCoder, log_num, num, processed_df, read_csv,
     read_sql, sampling, simple_corr, stats, summary, toExcel, gbyExcel)
 from scripts.groupby import gbyone, gbytwo, gbyselectnum
-
+import fire
 
 class Profiler:
     
@@ -82,20 +82,20 @@ class Profiler:
         analysis = gbyone(clean_df, self.i)
         gbyExcel(analysis, outfile)
     
-    def groupbytwo(self, file):
+    def groupbytwo(self, file, v, x):
         read_file = fHandler(file)
         clean_df = processed_df(read_file)
         analysis = gbytwo(clean_df, self.v, self.x)
         gbyExcel(analysis, outfile)
     
-    def groupbyselect(self, file):
+    def groupbyselect(self, file, y, z):
         read_file = fHandler(file)
         clean_df = processed_df(read_file)
         analysis = gbyselectnum(clean_df, self.y, self.z)
         gbyExcel(analysis, outfile)
         
-
-if __name__ == '__main__':
+        
+def main():
     Profiler().build_report(file)
     Profiler().print_graphs(file)
     Profiler().f_five(file)
@@ -106,5 +106,8 @@ if __name__ == '__main__':
     Profiler().groupbyone(file)
     Profiler().groupbytwo(file)
     Profiler().groupbyselect(file)
-    
-    
+        
+        
+if __name__ == '__main__':
+    fire.Fire(main)
+        

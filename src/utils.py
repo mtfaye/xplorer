@@ -15,10 +15,7 @@ def read_csv(filepath, chunksize):
            Pandas dataframe.
     """ 
     print('Reading data...')
-    reader = pd.read_csv(filepath, 
-                         sep='|',
-                         chunksize=chunksize,
-                         iterator=True)  
+    reader = pd.read_csv(filepath, sep='|', chunksize=chunksize, iterator=True)  
     return pd.concat(reader, ignore_index=True)
     
 
@@ -162,12 +159,7 @@ def correlor(df, col, k):
     return df[c].corr().round(2)
      
      
-def toExcel(summary, 
-            stats,
-            duplicates,
-            simple_corr, 
-            correlor, 
-            dir_path):
+def toExcel(summary, stats, duplicates, simple_corr, correlor, dir_path):
     """Takes df and writes excel file to a specific directory.
     """  
     print('Writing report...')    
@@ -176,13 +168,25 @@ def toExcel(summary,
     worksheet = workbook.add_worksheet('Report')
     writer.sheets['Report'] = worksheet
     worksheet.write_string(0, 0, 'Summary')
-    summary.to_excel(writer, sheet_name = 'Report', startrow=1, startcol=0)
+    summary.to_excel(writer,
+                      sheet_name = 'Report', 
+                      startrow=1, 
+                      startcol=0)
     worksheet.write_string(summary.shape[0] + 4, 0, 'Stats')
-    stats.to_excel(writer, sheet_name = 'Report', startrow=summary.shape[0] + 5, startcol=0)
+    stats.to_excel(writer,
+                    sheet_name = 'Report',
+                    startrow=summary.shape[0] + 5,
+                    startcol=0)
     worksheet.write_string(stats.shape[0] + 9, 0, 'Duplicates')
-    duplicates.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 10, startcol=0)
+    duplicates.to_excel(writer, 
+                        sheet_name = 'Report',
+                        startrow=stats.shape[0] + 10, 
+                        startcol=0)
     worksheet.write_string(stats.shape[0] + 14, 0, 'Coef Correlation between Numerical Variables')
-    simple_corr.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 15, startcol=0)
+    simple_corr.to_excel(writer, 
+                         sheet_name = 'Report', 
+                         startrow=stats.shape[0] + 15, 
+                         startcol=0)
     writer.close()
     print('Done.')
 
