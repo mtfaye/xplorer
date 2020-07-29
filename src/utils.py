@@ -6,7 +6,6 @@ import pandas as pd
 import pyodbc
 
 
-
 def read_csv(filepath, chunksize):
     """Takes csv files and returns a pandas dataframe.
     Args: filepath = Path of the csv file in string.
