@@ -33,6 +33,6 @@ setup(
         ]
     },
     install_requires=[
-        'pandas','seaborn','xlsxwriter','pyodbc'
+        'pandas','seaborn','xlsxwriter','pyodbc, fire'
         ]
     )

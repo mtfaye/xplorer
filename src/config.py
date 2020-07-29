@@ -16,4 +16,4 @@ password = '##################'
 tablename = '##################'
 
 # You can initialize the csv file path from here
-filepath = "Path in string"
+filepath = r"C:\Users\MouhamethFaye\Documents\demo_package\demo_package\data\Transaction_EN_Final.csv"

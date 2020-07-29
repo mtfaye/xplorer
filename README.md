@@ -9,27 +9,27 @@ If the user of this application is comfortable enough with the source code, he c
 ## Package content 
 
 	
-		├──.vscode
+		├── docs # Documentations
 		│
-		├── README.md
-		│  
-		├── docs   #  Contains documentations
+		├── examples # Examples on how to setup and run the app
 		│  
 		├── outfile   # Contains report files
 		│  
-		├── examples   # Examples on how to setup and run the app 
+		├── src   # source code
 		│  
-		├── src   # Utility functions
+		├── tests   # For unittesting      
+		│  
+		├── .gitignore   # List of undesired built-in files
 		│   
-		├── tests   # For unittesting 
+		├── dev-requirements.txt  # dependencies for development and testing
+		│   
+		├── profiler.py   # Main module of the profiler  
 		│   
-		├──.gitignore   # List of undesired built-in files
+		├── README.md   
 		│  
 		├── requirements.txt   # Bucket of all dependencies
 		│ 
-		├── profiler.py   # Main module of the profiler  c
-		│ 
-		├── setup.py   # Installer module
+		├── setup.py   # pip installer module
 
 
 
@@ -56,43 +56,52 @@ From command line :
 	     
 ## Run it 
 
-1. Open the python interpreter from command line by just typing python : 
-                 ``` $ (venv) python  ```
+- First : 
+			Go on the config.py file (src/config.py) and assign a variable to your filepath
 
-2. Import the profiler module : 
-                ```>>> import profiler as pr ```
+			filepath = r"C:User/Documents/filename.csv" 
 
-3. Now try these following scripts to run your analysis: 
-
-			Create a variable name of your dataset
-			>>> file = r"..User/Documents/file.csv" 
+- Now try these following scripts to run your analysis: 
 
 			Build the excel report
-			>>> pr.Profiler().build_report(file) 
+			profiler.py build_report
 
 			Print histograms and bars
-			>>> pr.Profiler().print_graphs(file)
+		    profiler.py print_graphs
 
 			NB: By default if no filter is applied for bars, only the 10 subcategories with the highest values will be shown.
 			Now to filter the number of bars use one of the following functions accordingly: 
 			
 			For eight highest values  
-			>>> pr.Profiler().f_eight(file)
+			profiler.py f_eight
 
 			For five highest values 
-			>>> pr.Profiler().f_five(file) 
+			profiler.py f_five
 
 			To show all  
-			>>> pr.Profiler().print_all(file) 
+			profiler.py print_all 
 			
 			To apply a log tranformation of numerical columns
-			>>> pr.Profiler().log(file) 
+			profiler.py log
 
 			To run a correlation analysis: Print a heatmap
 			Call the function corr_viz()  
-			>>> pr.Profiler().corr_viz(file) 
+			profiler.py corr_viz
 
 
+- To run a groupby analysis
+
+			For groupby function of one given categorical column with all the numerical columns of the dataframe.
+			profiler.py gb 'Direction'
+
+			For groupby function of two given categorical columns with all the numerical columns of the dataframe.
+			profiler.py gbtwo 'Direction' 'Market'
+
+			For groupby function of one given categorical column and one given numerical column.
+			profiler.py gbonebyone 'Market' 'Amount'
+
+			For groupby function of two given categorical column and two given numerical columns.
+			profiler.py gbtwobytwo 'Direction' 'Market' 'Amount' 'IdTrx'
 
 
 
