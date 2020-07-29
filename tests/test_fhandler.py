@@ -4,23 +4,22 @@
 
 import pandas as pd
 import pytest
+import src.fhandler as sf
 
-import scripts.fhandler as sf
 
-
-def test__fHandler_csv():
+def test_fHandler_csv():
     p = 'dataframe.csv'
     with pytest.raises(OSError) as e:
-        sf._fHandler(p)
+        sf.fHandler(p)
     message = str(e.value)
     assert message.startswith('[Errno 2]')
     assert 'No such file or directory' in message or 'does not exist' in message
 
 
-def test__fHandler_json():
+def test_fHandler_json():
     p = 'dataframe.json'
     with pytest.raises(ValueError) as e:
-        sf._fHandler(p)
+        sf.fHandler(p)
     assert str(e.value) == 'Expected object or value'
 
 

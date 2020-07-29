@@ -3,10 +3,11 @@ from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
+    
 
 setup(
-    name='Profiler',
-    version='0.01',
+    name='Profiler-Resolution',
+    version='0.02',
     description='Automate data profiling',
     long_description=long_description,
     classifiers=[
@@ -28,10 +29,10 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'profiler = profiler.profiler:main',
+            'profiler = profiler:main',
         ]
     },
     install_requires=[
-        'pandas','fire','seaborn','xlsxwriter','pyodbc'
+        'pandas','seaborn','xlsxwriter','pyodbc'
         ]
     )
