@@ -4,29 +4,39 @@
 import pandas as pd 
 
 
-def gbyone(df, i):
+def gbOne(df, i):
     """ Calculates groupby functions of one given categorical column with all the numerical column of dataframe.
     Args: df = dataframe, 
            i = column name in string - categotical column only. 
     Returns: Dataframe
-    """
-    return df.groupby(i).mean()
+    """ 
+    return df.groupby(i).agg(['min','mean', 'max','count'])
 
-
-def gbytwo(df, v, x):
+def gbTwo(df, x, y):
     """ Calculates groupby functions of two given categorical column with all the numerical column of dataframe.
     Args: df = dataframe, 
-          v, x = column name in string categorical column only. 
+          x, y = column name in string categorical column only. 
     Returns: Dataframe
     """
-    return df.groupby([v, x]).mean()
+    return df.groupby([x, y]).agg(['min','mean', 'max','count'])
   
 
-def gbyselectnum(df, y, z):
-    """ Calculates groupby functions of one given categorical column with one given numerical column.
+def gbOnebyOne(df, x, y):
+    """ Calculates groupby functions of one given categorical column and one given numerical column.
     Args: df = dataframe, 
-          y = column name in string; categorical column only. 
-          z = column name in string; numerical column only.
+           x = column name in string categorical column only. 
+           y = column name in string numerical column only.
     Returns: Dataframe
     """
-    return df.y.groupby(z).mean()
+    return df.groupby(x)[y].agg(['min','mean', 'max','count'])
+
+
+def gbTwobyTwo(df, v, x, y, z):
+    """ Calculates groupby functions of two given categorical column and two given numerical columns.
+    Args: df = dataframe, 
+           v, x = columns name in string categorical column only. 
+           y, z = columns name in string numerical column only.
+    Returns: Dataframe
+    """
+    return df.groupby([v, x])[y, z].agg(['min','mean', 'max','count'])
+    

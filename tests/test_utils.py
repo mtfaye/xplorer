@@ -1,4 +1,4 @@
-"""Testing code for the utils fonctions. 
+"""Unit testing for utility fonctions. 
 """
 import pandas
 import pytest
@@ -14,9 +14,6 @@ def result_fixture():
 
 
 def test_dfSize(result_fixture):
-    """ Checks if dataframe has over 300000 rows.
-    because the default chunksize for reading a csv file is 300000.
-    """
     def is_df_big(result_fixture):
         if len(result_fixture) > 300000:
             return True
@@ -27,6 +24,4 @@ def test_dfSize(result_fixture):
     
     
 def test_dfObjecttype(result_fixture):
-    """Checks if a dataframe is passed to all others utils functions
-    """
     assert isinstance(result_fixture, pandas.DataFrame)

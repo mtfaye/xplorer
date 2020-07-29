@@ -3,7 +3,7 @@ v 0.01 alpha.
 
 This alpha version of the app reads only CSV files with "|" seperator and headers. 
 The lack of a standardized source file makes it annoying to build a sophisticated module that process CSV files of any types. Still, while the delimiters and quoting characters vary, the overall format is similar enough that it is possible to write a single module which can efficiently manipulate such data. 
-If the user of this application is comfortable enough with the source code, he can go into the src directory on the utils python file and hard code the delimiter under the df function.
+If the user of this application is comfortable enough with the source code, he can go into the src directory on the utils python file and hard code the delimiter under the read_csv function.
 
 
 ## Package content 
@@ -41,7 +41,7 @@ Make sure to have the latest [pip](https://pip.pypa.io/en/stable/), [Git](https:
 ## Setup 
 
 
-From comnand line :
+From command line :
 
 1. Clone the repo :  ``` $ git clone https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler```
 
@@ -85,7 +85,7 @@ From comnand line :
 			To show all  
 			>>> pr.Profiler().print_all(file) 
 			
-			To do a log tranformation 
+			To apply a log tranformation of numerical columns
 			>>> pr.Profiler().log(file) 
 
 			To run a correlation analysis: Print a heatmap
@@ -99,8 +99,6 @@ From comnand line :
 ## Contributing Documentation Changes
 
 Documentation improvements are always welcome! The documentation files live in the docs/ directory of the codebase. They’re written using Microsoft Word but it can be written in any type of text file, Markdown and Microsoft Word are the preferred one though.
-
-When presenting Python code in documents, use single-quoted strings ('hello' instead of "hello").
 
 
 ## Contributing Code Changes

@@ -93,11 +93,12 @@ def stats(df):
                                 'unique_values_count', 
                                 'non_unique_values_count',
                                 'non_null_values'))
-    
     for ind, cols in enumerate(df.columns):
-        dpd.loc[ind] = [cols, df[cols].dtype,
+        dpd.loc[ind] = [cols, 
+                         df[cols].dtype,
                          df[cols].nunique(),
-                         df.shape[0] - df[cols].nunique(),
+                         df.shape[0] 
+                         - df[cols].nunique(),
                          df[cols].count()
                          ]
     dpd['%_of_non_nulls'] = (dpd['non_null_values'] / df.shape[0]) * 100 
@@ -151,7 +152,7 @@ def enCoder(df):
     
     
 def correlor(df, col, k):
-    """Takes the 10 highest corr coeff of a choson variable col. 
+    """Takes the 10 highest corr coeff of a chosen variable col. 
     args: dataframe of encoded variables, col : chosen of target variable (string), k : treshold (int)
     return : dataframe
     """
@@ -159,7 +160,7 @@ def correlor(df, col, k):
     return df[c].corr().round(2)
      
      
-def toExcel(summary, stats, duplicates, simple_corr, correlor, dir_path):
+def toExcel(summary, stats, duplicates, simple_corr, dir_path):
     """Takes df and writes excel file to a specific directory.
     """  
     print('Writing report...')    
@@ -167,6 +168,7 @@ def toExcel(summary, stats, duplicates, simple_corr, correlor, dir_path):
     workbook = writer.book
     worksheet = workbook.add_worksheet('Report')
     writer.sheets['Report'] = worksheet
+    
     worksheet.write_string(0, 0, 'Summary')
     summary.to_excel(writer,
                       sheet_name = 'Report', 
@@ -196,9 +198,9 @@ def gbyExcel(df, dir_path):
     """   
     writer = pd.ExcelWriter(dir_path/'Groupby_Analysis.xlsx', engine='xlsxwriter' )
     workbook = writer.book
-    worksheet = workbook.add_worksheet('Groupby_Analysis')
-    writer.sheets['Groupby_Analysis'] = worksheet
-    worksheet.write_string(0, 0, 'Groupby_Analysis')
-    df.to_excel(writer, sheet_name = 'Groupby_Analysis', startrow=1, startcol=0)
+    worksheet = workbook.add_worksheet('Groupby Analysis')
+    writer.sheets['Groupby Analysis'] = worksheet
+    worksheet.write_string(0, 0, 'Groupby Analysis')
+    df.to_excel(writer, sheet_name = 'Groupby Analysis', startrow=2, startcol=0)
     writer.close()
     print('Done.')

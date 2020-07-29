@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     
 
 setup(
-    name='Profiler',
+    name='Profiler-Resolution',
     version='0.02',
     description='Automate data profiling',
     long_description=long_description,
@@ -29,7 +29,7 @@ setup(
     packages=find_packages(),
     entry_points={
         'console_scripts': [
-            'profiler = profiler.profiler:main',
+            'profiler = profiler:main',
         ]
     },
     install_requires=[
