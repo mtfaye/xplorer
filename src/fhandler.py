@@ -39,5 +39,5 @@ def fHandler(filename):
         if extension != ".csv":
             warn_read(extension)
             
-        df = pd.read_csv(filename, sep='|')
+        df = pd.read_csv(filename, sep=';', encoding="ISO-8859-1", header=None)
     return df

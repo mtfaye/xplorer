@@ -41,7 +41,7 @@ def processed_df(df):
            Pandas dataframe.
     """
     print('Computing stats...')
-    df.columns = df.columns.str.strip().str.replace('/', '_').str.replace('(', '').str.replace(')', '')
+    df.columns = df.columns.map(str).str.strip().str.replace('/', '_').str.replace('(', '').str.replace(')', '')
     return df
 
 

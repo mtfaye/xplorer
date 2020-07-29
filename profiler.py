@@ -23,6 +23,7 @@ class Profiler:
         self.clean_df = processed_df(self.read_file)
             
     def build_report(self):
+        
         is_summary = summary(self.clean_df, num(self.clean_df), cat(self.clean_df))
         is_stats = stats(self.clean_df)
         is_dup = duplicates(self.clean_df)
