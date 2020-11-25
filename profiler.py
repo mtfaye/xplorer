@@ -24,12 +24,20 @@ class Profiler:
             
     def build_report(self):
         
-        is_summary = summary(self.clean_df, num(self.clean_df), cat(self.clean_df))
-        is_stats = stats(self.clean_df)
-        is_dup = duplicates(self.clean_df)
-        is_corr = simple_corr(self.clean_df)
-        return toExcel(is_summary, is_stats, is_dup, is_corr, outfile)
+
         
+    def build_report(self, file):
+        read_file = fHandler(file)
+        clean_df = processed_df(read_file)
+        is_summary = summary(clean_df, num(clean_df), cat(clean_df))
+        is_stats = stats(clean_df)
+        is_dup = duplicates(clean_df)
+        is_samp = sampling(clean_df, self.sample_size)
+        is_dum = enCoder(is_samp)
+        is_corr = correlor(is_dum, self.col, self.n_highest).loc[:, self.col]
+        scorr = simple_corr(is_samp)
+        toExcel(is_summary, is_stats, is_dup, scorr, is_corr, outfile)
+
     def print_graphs(self):
         return filter_ten(cat(self.clean_df), outfile), hist(num(self.clean_df), outfile)
     
@@ -72,5 +80,4 @@ def main():
  
 
 if __name__ == '__main__':
-    main()
-    
+
