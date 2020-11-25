@@ -6,7 +6,6 @@ import pandas as pd
 import pyodbc
 
 
-
 def read_csv(filepath, chunksize):
     """Takes csv files and returns a pandas dataframe.
     Args: filepath = Path of the csv file in string.
@@ -15,10 +14,7 @@ def read_csv(filepath, chunksize):
            Pandas dataframe.
     """ 
     print('Reading data...')
-    reader = pd.read_csv(filepath, 
-                         sep='|',
-                         chunksize=chunksize,
-                         iterator=True)  
+    reader = pd.read_csv(filepath, sep='|', chunksize=chunksize, iterator=True)  
     return pd.concat(reader, ignore_index=True)
     
 
@@ -45,7 +41,7 @@ def processed_df(df):
            Pandas dataframe.
     """
     print('Computing stats...')
-    df.columns = df.columns.str.strip().str.replace('/', '_').str.replace('(', '').str.replace(')', '')
+    df.columns = df.columns.map(str).str.strip().str.replace('/', '_').str.replace('(', '').str.replace(')', '')
     return df
 
 
@@ -96,11 +92,12 @@ def stats(df):
                                 'unique_values_count', 
                                 'non_unique_values_count',
                                 'non_null_values'))
-    
     for ind, cols in enumerate(df.columns):
-        dpd.loc[ind] = [cols, df[cols].dtype,
+        dpd.loc[ind] = [cols, 
+                         df[cols].dtype,
                          df[cols].nunique(),
-                         df.shape[0] - df[cols].nunique(),
+                         df.shape[0] 
+                         - df[cols].nunique(),
                          df[cols].count()
                          ]
     dpd['%_of_non_nulls'] = (dpd['non_null_values'] / df.shape[0]) * 100 
@@ -154,7 +151,7 @@ def enCoder(df):
     
     
 def correlor(df, col, k):
-    """Takes the 10 highest corr coeff of a choson variable col. 
+    """Takes the 10 highest corr coeff of a chosen variable col. 
     args: dataframe of encoded variables, col : chosen of target variable (string), k : treshold (int)
     return : dataframe
     """
@@ -162,12 +159,7 @@ def correlor(df, col, k):
     return df[c].corr().round(2)
      
      
-def toExcel(summary, 
-            stats,
-            duplicates,
-            simple_corr, 
-            correlor, 
-            dir_path):
+def toExcel(summary, stats, duplicates, simple_corr, dir_path):
     """Takes df and writes excel file to a specific directory.
     """  
     print('Writing report...')    
@@ -175,14 +167,27 @@ def toExcel(summary,
     workbook = writer.book
     worksheet = workbook.add_worksheet('Report')
     writer.sheets['Report'] = worksheet
+    
     worksheet.write_string(0, 0, 'Summary')
-    summary.to_excel(writer, sheet_name = 'Report', startrow=1, startcol=0)
+    summary.to_excel(writer,
+                      sheet_name = 'Report', 
+                      startrow=1, 
+                      startcol=0)
     worksheet.write_string(summary.shape[0] + 4, 0, 'Stats')
-    stats.to_excel(writer, sheet_name = 'Report', startrow=summary.shape[0] + 5, startcol=0)
+    stats.to_excel(writer,
+                    sheet_name = 'Report',
+                    startrow=summary.shape[0] + 5,
+                    startcol=0)
     worksheet.write_string(stats.shape[0] + 9, 0, 'Duplicates')
-    duplicates.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 10, startcol=0)
+    duplicates.to_excel(writer, 
+                        sheet_name = 'Report',
+                        startrow=stats.shape[0] + 10, 
+                        startcol=0)
     worksheet.write_string(stats.shape[0] + 14, 0, 'Coef Correlation between Numerical Variables')
-    simple_corr.to_excel(writer, sheet_name = 'Report', startrow=stats.shape[0] + 15, startcol=0)
+    simple_corr.to_excel(writer, 
+                         sheet_name = 'Report', 
+                         startrow=stats.shape[0] + 15, 
+                         startcol=0)
     writer.close()
     print('Done.')
 
@@ -192,9 +197,9 @@ def gbyExcel(df, dir_path):
     """   
     writer = pd.ExcelWriter(dir_path/'Groupby_Analysis.xlsx', engine='xlsxwriter' )
     workbook = writer.book
-    worksheet = workbook.add_worksheet('Groupby_Analysis')
-    writer.sheets['Groupby_Analysis'] = worksheet
-    worksheet.write_string(0, 0, 'Groupby_Analysis')
-    df.to_excel(writer, sheet_name = 'Groupby_Analysis', startrow=1, startcol=0)
+    worksheet = workbook.add_worksheet('Groupby Analysis')
+    writer.sheets['Groupby Analysis'] = worksheet
+    worksheet.write_string(0, 0, 'Groupby Analysis')
+    df.to_excel(writer, sheet_name = 'Groupby Analysis', startrow=2, startcol=0)
     writer.close()
     print('Done.')

@@ -66,7 +66,7 @@ def filter_five(cat, dir_path):
 def filter_eight(cat, dir_path):
     """Writes png files for each value.
     Args : 
-        cat = pandas datafram of categorical columns only.
+        cat = pandas dataframe of categorical columns only.
         dir_path = directory for saved files in string. 
     Returns : 
         png files on dir_path

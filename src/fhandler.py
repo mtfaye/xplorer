@@ -17,7 +17,7 @@ To prevent this warning from showing up, please rename the file to any of the ex
 
 def fHandler(filename):
     """Read DataFrame based on the file extension. 
-    Various file types are supported (.csv, .json, .jsonl,.xls, .xlsx, .hdf, .h5, .pkl, .pickle)
+    Various file types are supported (.csv, .txt, .json, .jsonl,.xls, .xlsx, .hdf, .h5, .pkl, .pickle)
     Args:
         filename: the file to read
     Returns:
@@ -36,8 +36,8 @@ def fHandler(filename):
     elif extension in [".pkl", ".pickle"]:
         df = pd.read_pickle(str(filename))
     else:
-        if extension != ".csv":
+        if extension != ".csv" and ".txt":
             warn_read(extension)
             
-        df = pd.read_csv(filename, sep='|')
+        df = pd.read_csv(filename, sep=';', encoding="ISO-8859-1", header=None)
     return df
