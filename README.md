@@ -143,4 +143,4 @@ For more about PEP-8 see  [Link](https://www.python.org/dev/peps/pep-0008/).
 ## Enjoy ! 
 
 
-Contact maintainer @mouhameth.faye@resolutioninc.ca
+author - Mouhameth T. Faye
