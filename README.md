@@ -1,4 +1,4 @@
-# Profiler tool 
+# Xplorer is a data profiling tool that can help developers automate some repetitive data exploration. 
 v 0.01 alpha.
 
 This alpha version of the app reads only CSV files with "|" seperator and headers. 
@@ -35,7 +35,7 @@ If the user of this application is comfortable enough with the source code, he c
 
 ## Prerequisites 
 
-Make sure to have the latest [pip](https://pip.pypa.io/en/stable/), [Git](https://git-scm.com/downloads) and [Python3+](https://www.python.org/downloads/) installed in your VM. 
+Make sure to have the latest [pip](https://pip.pypa.io/en/stable/), [Git](https://git-scm.com/downloads) and [Python3+](https://www.python.org/downloads/) installed in your local machine. 
 
 
 ## Setup 
@@ -43,7 +43,7 @@ Make sure to have the latest [pip](https://pip.pypa.io/en/stable/), [Git](https:
 
 From command line :
 
-1. Clone the repo :  ``` $ git clone https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler```
+1. Clone the repo 
 
 2. Go into the working directory : ``` $ cd Profiler ```
 
@@ -113,12 +113,12 @@ Documentation improvements are always welcome! The documentation files live in t
 ## Contributing Code Changes
 
 When contributing code, you’ll want to follow this checklist :
-- 1. Fork the project repository at [master branch Repos](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler)if you haven't already.
+- 1. Fork the project repository if you haven't already.
 - 2. Clone your fork in your Virtual Machine.
 - 3. Create a new branch (Best Practices : never work on the master branch).
 - 4. After writing your codes, push commits to the branch created (Always use  the file dev-requirements.txt when developing or running a test).
 - 5. Consider whether documentation or tests need to be added or updated as part of the change, and add them as needed.
-- 6. Send a pull request to the main repository’s [master branch](https://ResolutionDevops@dev.azure.com/ResolutionDevops/Profiler/_git/Profiler.) (Only in special cases would the Pull Request be opened against other branches.)
+- 6. Send a pull request to the main repository’s  (Only in special cases would the Pull Request be opened against other branches.)
 
 ## Bug Reports
 
