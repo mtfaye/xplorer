@@ -1,4 +1,4 @@
-# Xplorer is a data profiling tool that can help developers automate some repetitive data exploration. 
+# Xplorer is a data profiling tool that can help developers automate some repetitive data exploration tasks. 
 v 0.01 alpha.
 
 This alpha version of the app reads only CSV files with "|" seperator and headers. 
